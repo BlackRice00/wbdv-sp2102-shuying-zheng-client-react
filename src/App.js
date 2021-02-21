@@ -2,12 +2,15 @@ import logo from './logo.svg';
 import './App.css';
 import CourseManager from "./components/course-manager";
 import CourseTable from "./components/course-table";
+import {BrowserRouter} from "react-router-dom";
 
 function App() {
   return (
-    <div className="container-fluid">
-      <CourseManager/>
-    </div>
+      <BrowserRouter>
+          <div className="container-fluid">
+              <CourseManager/>
+          </div>
+      </BrowserRouter>
   );
 }
 
