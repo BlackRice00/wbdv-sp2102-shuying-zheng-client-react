@@ -1,8 +1,8 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import CourseManager from "./components/course-manager";
-import CourseTable from "./components/course-table";
 import {BrowserRouter} from "react-router-dom";
+
 
 function App() {
   return (
