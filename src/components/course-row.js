@@ -20,7 +20,7 @@ const CourseRow = (
             ...course,
             title: newTitle
         }
-        updateCourse(course)
+        updateCourse(newCourse)
     }
 
     return (
