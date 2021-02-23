@@ -8,7 +8,22 @@ import courseService, {findAllCourses, deleteCourse} from "../services/course-se
 class CourseManager extends React.Component {
 
     state = {
-        courses: []
+        courses: [],
+        newCourse: {
+            title: "New Course",
+            owner: "me",
+            lastModified:"11:01"
+        }
+    }
+
+    onCourseChange = (event) => {
+        this.setState({
+            newCourse: {
+                title: event.target.value,
+                owner: "me",
+                lastModified: new Date().toLocaleDateString()
+            }
+        })
     }
 
     updateCourse = (course) => {
@@ -31,11 +46,15 @@ class CourseManager extends React.Component {
             .then(courses => this.setState({courses}))
 
 
-    addCourse = () => {
-        const newCourse = {
-            title: "new course",
-            owner: "new owner",
-            lastModified: "Never"
+    addCourse = (event) => {
+        // const newCourse = this.state.newCourse
+        let newCourse = this.state.newCourse
+        if (this.state.newCourse.title.trim() === "") {
+            newCourse={
+                title: "New Course",
+                owner: "me",
+                lastModified: new Date().toLocaleDateString()
+            }
         }
 
         courseService.createCourse(newCourse)
@@ -43,12 +62,15 @@ class CourseManager extends React.Component {
                 (prevState) => ({
                     ...prevState,
                     courses: [
-                        ...prevState.courses,
-                        course
+                        course,
+                        ...prevState.courses
                     ]
                 })))
         // this.state.courses.push(newCourse)
         // this.setState(this.state)
+        this.setState({newCourse: {title: "New Course", owner: "me",
+                lastModified: new Date().toLocaleDateString()}})
+        event.preventDefault()
     }
 
     deleteCourse = (courseToDelete) => {
@@ -87,8 +109,32 @@ class CourseManager extends React.Component {
     {
         return (
             <div>
-                <h1>Course Manager</h1>
-                <button onClick={() => this.addCourse()}>Add Course</button>
+                {/*<h1>Course Manager</h1>*/}
+                {/*<button onClick={() => this.addCourse()}>Add Course</button>*/}
+                <body className="bg-light">
+                <nav className="navbar row bg-primary sticky-top">
+                    <div className="col-1">
+                        <a href="/">
+                            <i className="col fas fa-bars fa-2x " style={{color: 'white'}}></i>
+                        </a>
+                    </div>
+                    <h3 className="d-none d-md-block text-white">Course Manager</h3>
+                    <div className="col" style={{marginLeft:'5%'}}>
+                        <input className="form-control font-italic"
+                               type="text"
+                               placeholder="New Course Title"
+                               onChange={this.onCourseChange}
+                               value={this.state.newCourse.title}
+                        />
+                    </div>
+                    <div className="col">
+                        <i onClick={this.addCourse}
+                           className="fas fa-plus fa-2x col-md-auto text-white float-right">
+                        </i>
+                    </div>
+
+                </nav>
+                </body>
                 <Route path="/courses/table">
                     <CourseTable
                         updateCourse={this.updateCourse}
@@ -97,6 +143,7 @@ class CourseManager extends React.Component {
                 </Route>
                 <Route path="/courses/grid">
                     <CourseGrid
+                        updateCourse={this.updateCourse}
                         deleteCourse={this.deleteCourse}
                         courses={this.state.courses}/>
                 </Route>
@@ -110,6 +157,11 @@ class CourseManager extends React.Component {
                        render={(props) =>
                            <CourseEditor {...props}/>}>
                 </Route>
+                <div className="fixed-bottom">
+                    <i onClick={this.addCourse}
+                       className="fas fa-plus fa-3x float-right text-primary" style={{margin: '2%'}}></i>
+                </div>
+
             </div>
         )
     }

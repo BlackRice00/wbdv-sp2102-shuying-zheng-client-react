@@ -25,30 +25,33 @@ const CourseRow = (
 
     return (
         <tr>
-        <td>
-            {
-                !editing &&
-                <Link to="/courses/editor">
-                    {title}
-                </Link>
-            }
-            {
-                editing &&
-                <input
-                    onChange={(event) => setNewTitle(event.target.value)}
-                    value={newTitle}
-                    className="form-control"/>
-            }
-
+            <td className="d-md-table-cell">
+                <i className="fas fa-file-alt col-md-auto text-primary"></i>
+                {
+                    !editing &&
+                    <Link to="/editor">
+                        {title}
+                    </Link>
+                }
+                {
+                    editing &&
+                    <input
+                        onChange={(event) => setNewTitle(event.target.value)}
+                        value={newTitle}
+                        className="form-control"/>
+                }
+            </td>
+            <td scope="col-2" className="d-none d-md-table-cell">{owner}</td>
+            <td className="d-none d-lg-table-cell">{lastModified}</td>
+            <td>
+                {!editing && <i onClick={() => setEditing(true)}
+                                className="fas fa-edit float-right"></i>}
+                {editing && <i onClick={() => (deleteCourse(course), setEditing(false))}
+                   className="fas fa-trash float-right"></i>}
+                {editing && <i onClick={() => saveTitle()}
+                               className="fas fa-check float-right"></i>}
         </td>
-        <td>{owner}</td>
-        <td>{lastModified}</td>
-        <td>
-            <i onClick={() => deleteCourse(course)} className="fas fa-trash"></i>
-            {!editing && <i onClick={() => setEditing(true)} className="fas fa-edit"></i>}
-            {editing && <i onClick={() => saveTitle()} className="fas fa-check"></i>}
-        </td>
-    </tr>)
+        </tr>)
 }
 
 export default CourseRow
