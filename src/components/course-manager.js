@@ -12,7 +12,7 @@ class CourseManager extends React.Component {
         newCourse: {
             title: "New Course",
             owner: "me",
-            lastModified:"11:01"
+            lastModified:new Date().toLocaleDateString()
         }
     }
 
@@ -111,37 +111,55 @@ class CourseManager extends React.Component {
             <div>
                 {/*<h1>Course Manager</h1>*/}
                 {/*<button onClick={() => this.addCourse()}>Add Course</button>*/}
-                <body className="bg-light">
-                <nav className="navbar row bg-primary sticky-top">
-                    <div className="col-1">
-                        <a href="/">
-                            <i className="col fas fa-bars fa-2x " style={{color: 'white'}}></i>
-                        </a>
-                    </div>
-                    <h3 className="d-none d-md-block text-white">Course Manager</h3>
-                    <div className="col" style={{marginLeft:'5%'}}>
-                        <input className="form-control font-italic"
-                               type="text"
-                               placeholder="New Course Title"
-                               onChange={this.onCourseChange}
-                               value={this.state.newCourse.title}
-                        />
-                    </div>
-                    <div className="col">
-                        <i onClick={this.addCourse}
-                           className="fas fa-plus fa-2x col-md-auto text-white float-right">
-                        </i>
-                    </div>
-
-                </nav>
-                </body>
                 <Route path="/courses/table">
+                    <nav className="navbar row bg-primary sticky-top">
+                        <div className="col-1">
+                            <a href="/">
+                                <i className="col fas fa-bars fa-2x " style={{color: 'white'}}></i>
+                            </a>
+                        </div>
+                        <h3 className="d-none d-md-block text-white">Course Manager</h3>
+                        <div className="col" style={{marginLeft:'5%'}}>
+                            <input className="form-control font-italic"
+                                   type="text"
+                                   placeholder="New Course Title"
+                                   onChange={this.onCourseChange}
+                                   value={this.state.newCourse.title}
+                            />
+                        </div>
+                        <div className="col">
+                            <i onClick={this.addCourse}
+                               className="fas fa-plus fa-2x col-md-auto text-white float-right">
+                            </i>
+                        </div>
+                    </nav>
                     <CourseTable
                         updateCourse={this.updateCourse}
                         deleteCourse={this.deleteCourse}
                         courses={this.state.courses}/>
                 </Route>
                 <Route path="/courses/grid">
+                    <nav className="navbar row bg-primary sticky-top">
+                        <div className="col-1">
+                            <a href="/">
+                                <i className="col fas fa-bars fa-2x " style={{color: 'white'}}></i>
+                            </a>
+                        </div>
+                        <h3 className="d-none d-md-block text-white">Course Manager</h3>
+                        <div className="col" style={{marginLeft:'5%'}}>
+                            <input className="form-control font-italic"
+                                   type="text"
+                                   placeholder="New Course Title"
+                                   onChange={this.onCourseChange}
+                                   value={this.state.newCourse.title}
+                            />
+                        </div>
+                        <div className="col">
+                            <i onClick={this.addCourse}
+                               className="fas fa-plus fa-2x col-md-auto text-white float-right">
+                            </i>
+                        </div>
+                    </nav>
                     <CourseGrid
                         updateCourse={this.updateCourse}
                         deleteCourse={this.deleteCourse}
@@ -153,7 +171,7 @@ class CourseManager extends React.Component {
                 {/*<Route path="/courses/editor"*/}
                 {/*       render={(props) => <CourseEditor props={props}/>}>*/}
                 {/*</Route>*/}
-                <Route path="/courses/editor"
+                <Route path="/editor"
                        render={(props) =>
                            <CourseEditor {...props}/>}>
                 </Route>

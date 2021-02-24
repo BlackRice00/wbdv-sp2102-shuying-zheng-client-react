@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5ffa08c-0c1e-438c-b1d5-b7b3a01bb012" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/course-editor.style.client.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/course-card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/course-card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/course-grid.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/course-grid.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/course-editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/course-editor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/course-manager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/course-manager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/course-row.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/course-row.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/course-table.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/course-table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/course-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/course-service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,13 +50,15 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -78,7 +75,8 @@
       <workItem from="1613948458662" duration="9363000" />
       <workItem from="1614018574017" duration="8797000" />
       <workItem from="1614037260799" duration="1070000" />
-      <workItem from="1614114661904" duration="5110000" />
+      <workItem from="1614114661904" duration="5985000" />
+      <workItem from="1614125448993" duration="999000" />
     </task>
     <servers />
   </component>
