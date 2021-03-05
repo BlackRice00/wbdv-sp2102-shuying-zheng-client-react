@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5ffa08c-0c1e-438c-b1d5-b7b3a01bb012" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/counter/react-state/counter-display.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/counter/react-state/counter-down.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/counter/react-state/counter-react.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/counter/react-state/counter-up.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/counter/redux-state/counter-display.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/counter/redux-state/counter-down.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/counter/redux-state/counter-redux.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/counter/redux-state/counter-up.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +44,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/counter/redux-state" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -46,16 +57,19 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/counter/redux-state" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -73,7 +87,9 @@
       <workItem from="1614018574017" duration="8797000" />
       <workItem from="1614037260799" duration="1070000" />
       <workItem from="1614114661904" duration="5985000" />
-      <workItem from="1614125448993" duration="2448000" />
+      <workItem from="1614125448993" duration="2901000" />
+      <workItem from="1614805498492" duration="529000" />
+      <workItem from="1614810995260" duration="4968000" />
     </task>
     <servers />
   </component>
