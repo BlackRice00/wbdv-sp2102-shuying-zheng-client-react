@@ -1,9 +1,16 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-const CounterDisplay = ({count}) =>
+const CounterDisplay = ({myCount, message}) =>
     <h1>
-        Count: {count}
+        Count: {myCount}{message}
     </h1>
 
-export default connect()(CounterDisplay)
+const stateToPropertyMapper = (state) => {
+    return {
+        myCount: state.count,
+        message: "hello"
+    }
+}
+
+export default connect(stateToPropertyMapper)(CounterDisplay)
