@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import './course-editor.style.client.css';
 import moduleReducer from "../reducers/modules-reducer";
 import {combineReducers, createStore} from "redux";
@@ -17,14 +17,15 @@ const reducer = combineReducers({
 const store = createStore(reducer)
 
 // const CourseEditor = ({props}) =>
-const CourseEditor = ({history}) =>
-    <Provider store={store}>
+const CourseEditor = ({history}) => {
+    const {courseId, moduleId} = useParams();
+    return (<Provider store={store}>
         <div>
             <h2>
                 <Link to="/courses/table">
                     <i className="fas fa-arrow-left"></i>
                 </Link>
-                Course Editor
+                Course Editor {courseId} {moduleId}
                 <i onClick={() => history.goBack()}
                    className="fas fa-times float-right"></i>
                 {/*<i onClick={() => props.history.goBack()}*/}
@@ -205,7 +206,8 @@ const CourseEditor = ({history}) =>
                 </div>
             </div>
         </div>
-    </Provider>
+    </Provider>)
+}
 
 
 export default CourseEditor

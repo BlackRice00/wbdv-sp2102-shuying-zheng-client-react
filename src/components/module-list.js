@@ -1,6 +1,7 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React from 'react';
+import {connect} from 'react-redux';
 import EditableItem from "./editable-item";
+import {useParams} from "react-router-dom";
 
 const ModuleList = (
     {
@@ -8,14 +9,16 @@ const ModuleList = (
         createModule=() => alert("CREATE MODULE "),
         deleteModule=(item) => alert("DELETE " + item._id),
         updateModule
-    }) =>
-    <div>
-        <h2>Modules {myModules.length}</h2>
+    }) => {
+    const {courseId} = useParams();
+    return (<div>
+        <h2>Modules {myModules.length} {courseId}</h2>
         <ul className="list-group">
             {
                 myModules.map(module =>
                     <li className="list-group-item">
                         <EditableItem
+                            to={`/courses/editor/${courseId}/${module._id}`}
                             updateItem={updateModule}
                             deleteItem={deleteModule}
                             item={module}/>
@@ -26,7 +29,8 @@ const ModuleList = (
                 <i onClick={createModule} className="fas fa-plus fa-2x"></i>
             </li>
         </ul>
-    </div>
+    </div>)
+}
 
 const stpm = (state) => {
     return {
