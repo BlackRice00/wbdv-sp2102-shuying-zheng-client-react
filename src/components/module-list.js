@@ -1,16 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import EditableItem from "./editable-item";
 import {useParams} from "react-router-dom";
+// import {findModulesForCourse} from "../services/module-service";
+import moduleService from "../services/module-service";
 
 const ModuleList = (
     {
         myModules=[],
         createModule=() => alert("CREATE MODULE "),
         deleteModule=(item) => alert("DELETE " + item._id),
-        updateModule
+        updateModule,
+        findModulesForCourse=(courseId) => console.log(courseId)
     }) => {
     const {courseId} = useParams();
+    useEffect(() => {
+        findModulesForCourse(courseId)
+    }, [])
     return (<div>
         <h2>Modules {myModules.length} {courseId}</h2>
         <ul className="list-group">
@@ -26,7 +32,7 @@ const ModuleList = (
                 )
             }
             <li className="list-group-item">
-                <i onClick={createModule} className="fas fa-plus fa-2x"></i>
+                <i onClick={() => createModule(courseId)} className="fas fa-plus fa-2x"></i>
             </li>
         </ul>
     </div>)
@@ -40,15 +46,33 @@ const stpm = (state) => {
 
 const dtpm = (dispatch) => {
     return {
-        createModule: () => dispatch({type: "CREATE_MODULE"}),
-        deleteModule: (item) => dispatch({
-            type: "DELETE_MODULE",
-            moduleToDelete: item
-        }),
-        updateModule: (module) => dispatch({
-            type: "UPDATE_MODULE",
-            module
-        })
+        createModule: (courseId) => {
+            moduleService.createModule(courseId, {title: "New Module Title"})
+                .then(theActualModule => dispatch({
+                    type: "CREATE_MODULE",
+                    module: theActualModule
+                }))
+        },
+        deleteModule: (item) =>
+            moduleService.deleteModule(item._id)
+                .then(status =>dispatch({
+                    type: "DELETE_MODULE",
+                    moduleToDelete: item
+                })),
+        updateModule: (module) =>
+            moduleService.updateModule(module._id, module)
+                .then(status => dispatch({
+                    type: "UPDATE_MODULE",
+                    module
+                })),
+        findModulesForCourse: (courseId) => {
+            // alert(courseId)
+            moduleService.findModulesForCourse(courseId)
+                .then(theModules => dispatch({
+                    type: "FIND_MODULES_FOR_COURSE",
+                    modules: theModules
+                }))
+        }
     }
 }
 
