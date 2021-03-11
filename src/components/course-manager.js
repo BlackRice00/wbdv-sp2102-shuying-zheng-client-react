@@ -111,7 +111,7 @@ class CourseManager extends React.Component {
             <div>
                 {/*<h1>Course Manager</h1>*/}
                 {/*<button onClick={() => this.addCourse()}>Add Course</button>*/}
-                <Route path="/courses/table">
+                <Route path="/courses/table" exact={true}>
                     <nav className="navbar row bg-primary sticky-top">
                         <div className="col-1">
                             <a href="/">
@@ -138,7 +138,7 @@ class CourseManager extends React.Component {
                         deleteCourse={this.deleteCourse}
                         courses={this.state.courses}/>
                 </Route>
-                <Route path="/courses/grid">
+                <Route path="/courses/grid" exact={true}>
                     <nav className="navbar row bg-primary sticky-top">
                         <div className="col-1">
                             <a href="/">
@@ -171,17 +171,22 @@ class CourseManager extends React.Component {
                 {/*<Route path="/courses/editor"*/}
                 {/*       render={(props) => <CourseEditor props={props}/>}>*/}
                 {/*</Route>*/}
-                <Route path={["/courses/editor/:courseId",
-                    "/courses/editor/:courseId/:moduleId",
-                    "/courses/editor/:courseId/:moduleId/:lessonId"]}
+
+
+                {/*Course-Manager*/}
+                <Route path={[
+                    "/courses/:layout/editor/:courseId",
+                    "/courses/:layout/editor/:courseId/modules/:moduleId",
+                    "/courses/:layout/editor/:courseId/modules/:moduleId/lessons/:lessonId",
+                    "/courses/:layout/editor/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId"]}
                        render={(props) =>
                            <CourseEditor {...props}/>}
                        exact={true}>
                 </Route>
-                <div className="fixed-bottom">
-                    <i onClick={this.addCourse}
-                       className="fas fa-plus fa-3x float-right text-primary" style={{margin: '2%'}}></i>
-                </div>
+                {/*<div className="fixed-bottom">*/}
+                {/*    <i onClick={this.addCourse}*/}
+                {/*       className="fas fa-plus fa-3x float-right text-primary" style={{margin: '2%'}}></i>*/}
+                {/*</div>*/}
 
             </div>
         )

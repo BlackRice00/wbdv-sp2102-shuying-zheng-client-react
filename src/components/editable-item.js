@@ -6,7 +6,8 @@ const EditableItem = (
         to="/somewhere/to",
         deleteItem,
         updateItem,
-        item= {title: "Title", _id: "ID"}
+        item= {title: "Title", _id: "ID"},
+        active
     }) => {
     const [editing, setEditing] = useState(false)
     const [cachedItem, setCachedItem] = useState(item)
@@ -15,7 +16,7 @@ const EditableItem = (
             {
                 !editing &&
                 <>
-                    <Link className="nav-link" to={to}>
+                    <Link className={`nav-link ${active ? 'active' : ''}`} to={to}>
                         {item.title}
                     </Link>
 
@@ -29,7 +30,7 @@ const EditableItem = (
                     <input
                         onChange={(e) =>
                             setCachedItem({
-                                ...cachedItem,
+                                ...item,
                                 title: e.target.value
                             })}
                         value={cachedItem.title}/>
@@ -38,7 +39,10 @@ const EditableItem = (
                         setEditing(false)
                         updateItem(cachedItem)
                     }} className="fas fa-check"></i>
-                    <i onClick={() => deleteItem(item)} className="fas fa-times"></i>
+                    <i onClick={() => {
+                        setEditing(false)
+                        deleteItem(item)
+                    }} className="fas fa-times"></i>
                 </>
             }
 

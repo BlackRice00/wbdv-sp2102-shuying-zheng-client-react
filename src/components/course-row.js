@@ -29,7 +29,7 @@ const CourseRow = (
                 <i className="fas fa-file-alt col-md-auto text-primary"></i>
                 {
                     !editing &&
-                    <Link to={`/courses/editor/${course._id}`}>
+                    <Link to={`/courses/table/editor/${course._id}`}>
                         {title}
                     </Link>
                 }

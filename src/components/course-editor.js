@@ -7,10 +7,13 @@ import {Provider} from "react-redux";
 import ModuleList from "./module-list";
 import LessonTabs from "./lesson-tabs";
 import lessonReducer from "../reducers/lesson-reducer";
+import TopicPills from "./topic-pills";
+import topicReducer from "../reducers/topic-reducer";
 
 const reducer = combineReducers({
     moduleReducer: moduleReducer,
-    lessonReducer: lessonReducer
+    lessonReducer: lessonReducer,
+    topicReducer: topicReducer
 })
 
 // const store = createStore(moduleReducer)
@@ -25,7 +28,7 @@ const CourseEditor = ({history}) => {
                 <Link to="/courses/table">
                     <i className="fas fa-arrow-left"></i>
                 </Link>
-                Course Editor {courseId} {moduleId}
+                Course Editor
                 <i onClick={() => history.goBack()}
                    className="fas fa-times float-right"></i>
                 {/*<i onClick={() => props.history.goBack()}*/}
@@ -203,6 +206,7 @@ const CourseEditor = ({history}) => {
                 </div>
                 <div className="col-8">
                     <LessonTabs/>
+                    <TopicPills/>
                 </div>
             </div>
         </div>
