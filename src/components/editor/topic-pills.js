@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
-import EditableItem from "./editable-item";
+import EditableItem from "../editable-item";
 import {useParams} from "react-router-dom";
-import topicService, {findTopicsForLesson} from '../services/topic-service'
+import topicService, {findTopicsForLesson} from '../../services/topic-service'
 
 const TopicPills = (
     {
@@ -10,15 +10,24 @@ const TopicPills = (
         createTopicsForLesson,
         deleteTopic,
         findTopicsForLesson,
-        updateTopic
+        updateTopic,
+        selectTopic,
+        selected,
+        emptyTopics
     }
 ) => {
     const {layout, courseId, moduleId, lessonId, topicId} = useParams();
+
     useEffect(() => {
-        if(lessonId !== "undefined" && typeof lessonId !== "undefined") {
+        if(moduleId !== "undefined" && typeof moduleId !== "undefined"
+            && lessonId !== "undefined" && typeof lessonId !== "undefined"
+        ) {
             findTopicsForLesson(lessonId)
+        } else {
+            emptyTopics(lessonId)
         }
-    }, [lessonId])
+    }, [findTopicsForLesson, lessonId])
+
     return (<div>
         <h2>Topics</h2>
         {/*{JSON.stringify(topics)}*/}
@@ -79,7 +88,15 @@ const dtpm = (dispatch) => ({
                 type: "DELETE_TOPIC",
                 topicToDelete: item
             }))
-    }
+    },
+    emptyTopics: (lessonId) => {
+        dispatch({
+            type: "EMPTY_TOPIC"
+        })
+        topicService.findTopicsForLesson(lessonId).then(topics => {
+            topics.map(topic =>
+                topicService.deleteTopic(topic._id))
+        })}
 })
 
 export default connect(stpm, dtpm)(TopicPills)

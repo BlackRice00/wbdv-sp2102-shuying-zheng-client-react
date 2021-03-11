@@ -1,14 +1,14 @@
 import React from "react";
 import {Link, useParams} from "react-router-dom";
 import './course-editor.style.client.css';
-import moduleReducer from "../reducers/modules-reducer";
+import moduleReducer from "../../reducers/modules-reducer";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import ModuleList from "./module-list";
 import LessonTabs from "./lesson-tabs";
-import lessonReducer from "../reducers/lesson-reducer";
+import lessonReducer from "../../reducers/lesson-reducer";
 import TopicPills from "./topic-pills";
-import topicReducer from "../reducers/topic-reducer";
+import topicReducer from "../../reducers/topic-reducer";
 
 const reducer = combineReducers({
     moduleReducer: moduleReducer,
@@ -21,12 +21,12 @@ const store = createStore(reducer)
 
 // const CourseEditor = ({props}) =>
 const CourseEditor = ({history}) => {
-    const {courseTitle, courseId, moduleId} = useParams();
+    const {layout, courseTitle, courseId, moduleId} = useParams();
     return (<Provider store={store}>
         <div>
             <h2>
-                <Link to="/courses/table">
-                    <i className="fas fa-arrow-left"></i>
+                <Link to={`/courses/${layout}`}>
+                    <i className="fas fa-times"></i>
                 </Link>
                 Course Editor
                 <i onClick={() => history.goBack()}

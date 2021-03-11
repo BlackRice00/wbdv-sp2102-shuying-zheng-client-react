@@ -12,21 +12,20 @@ const EditableItem = (
     const [editing, setEditing] = useState(false)
     const [cachedItem, setCachedItem] = useState(item)
     return (
-        <>
+        <div>
             {
                 !editing &&
                 <>
                     <Link className={`nav-link ${active ? 'active' : ''}`} to={to}>
                         {item.title}
                     </Link>
-
                     <i onClick={() => setEditing(true)} className="fas fa-edit"></i>
                 </>
             }
 
             {
                 editing &&
-                <>
+                <div>
                     <input
                         onChange={(e) =>
                             setCachedItem({
@@ -43,10 +42,10 @@ const EditableItem = (
                         setEditing(false)
                         deleteItem(item)
                     }} className="fas fa-times"></i>
-                </>
+                </div>
             }
 
-        </>
+        </div>
     )
 }
 

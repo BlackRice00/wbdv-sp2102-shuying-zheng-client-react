@@ -39,6 +39,11 @@ const topicReducer = (state=initialState, action) => {
                     }
                 })
             }
+        case "EMPTY_TOPIC":
+            return {
+                ...state,
+                topics:[]
+            }
         default:
             return state
     }
