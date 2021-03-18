@@ -9,6 +9,7 @@ import LessonTabs from "./lesson-tabs";
 import lessonReducer from "../../reducers/lesson-reducer";
 import TopicPills from "./topic-pills";
 import topicReducer from "../../reducers/topic-reducer";
+import WidgetList from "./widgets/widget-list";
 
 const reducer = combineReducers({
     moduleReducer: moduleReducer,
@@ -201,12 +202,15 @@ const CourseEditor = ({history}) => {
             {/*    </div>*/}
             {/*</div>*/}
             <div className="row">
-                <div className="col-4">
+                <div className="col-3">
                     <ModuleList/>
                 </div>
-                <div className="col-8">
+                <div className="col-9">
                     <LessonTabs/>
+                    <br/>
                     <TopicPills/>
+                    <br/>
+                    <WidgetList/>
                 </div>
             </div>
         </div>
