@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import HeadingWidget from "./heading-widget";
 import ParagraphWidget from "./paragraph-widget";
 import {useParams} from 'react-router-dom';
-import {resetFirstInputPolyfill} from "web-vitals/dist/modules/lib/polyfills/firstInputPolyfill";
 
 const WidgetList = () => {
     // TODO: move state management to widgets-reducer.js
@@ -16,15 +15,7 @@ const WidgetList = () => {
             .then(widgets => setWidgets(widgets))
     }, [topicId])
 
-    const updateWidget = () => {}
-
-    const deleteWidget = (wid) =>
-        fetch(`http://localhost:8080/api/widgets/${wid}`, {
-            method: "DELETE"
-        }).then(response => {
-            setWidgets((widgets) => widgets.filter(w => w.id !== wid))
-        })
-
+    // create widget
     const createWidgetForTopic = () => {
         // TODO: move server communication to widgets-service.js
         fetch(`http://localhost:8080/api/topics/${topicId}/widgets`, {
@@ -40,6 +31,28 @@ const WidgetList = () => {
             })
     }
 
+    // delete widget
+    const deleteWidget = (wid) =>
+        fetch(`http://localhost:8080/api/widgets/${wid}`, {
+            method: "DELETE"
+        }).then(response => {
+            setWidgets((widgets) => widgets.filter(w => w.id !== wid))
+        })
+
+    // update widget
+    const updateWidget = (wid, widget) =>
+        fetch(`http://localhost:8080/api/widgets/${wid}`, {
+            method: "PUT",
+            body: JSON.stringify(widget),
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(response => {
+            setWidgets((widgets) => widgets.map(w => w.id !== wid ? w : widget))
+            setEditingWidget({})
+        })
+
+
     return(
         <div>
             <i onClick={createWidgetForTopic} className="fas fa-plus fa-2x float-right"></i>
@@ -52,9 +65,10 @@ const WidgetList = () => {
                             editingWidget.id === widget.id &&
                                 <>
                                     <i onClick={() => {
-                                        updateWidget()
-                                        setEditingWidget({})}} className="fas fa-2x fa-check float-right"></i>
-                                    <i onClick={() => deleteWidget(widget.id)} className="fas fa-2x fa-trash float-right"></i>
+                                        updateWidget(widget.id, editingWidget)
+                                        }} className="fas fa-2x fa-check float-right"></i>
+                                    <i onClick={() => deleteWidget(widget.id)}
+                                       className="fas fa-2x fa-trash float-right"></i>
                                 </>
                         }
                         {
@@ -64,11 +78,17 @@ const WidgetList = () => {
 
                         {
                            widget.type === "HEADING" &&
-                           <HeadingWidget widget={widget}/>
+                           <HeadingWidget
+                               setEditingWidget={setEditingWidget}
+                               editing={editingWidget.id === widget.id}
+                               widget={widget}/>
                         }
                         {
                             widget.type === "PARAGRAPH" &&
-                            <ParagraphWidget widget={widget}/>
+                            <ParagraphWidget
+                                setEditingWidget={setEditingWidget}
+                                editing={editingWidget.id === widget.id}
+                                widget={widget}/>
                         }
                     </li>
                     )
