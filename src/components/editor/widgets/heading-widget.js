@@ -1,17 +1,34 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 
-const HeadingWidget = ({widget, setEditingWidget, editing}) => {
-    return (
+const HeadingWidget = ({widget, updateWidget, deleteWidget}) => {
+    const [cachedWidget, setCachedWidget] = useState(widget)
+    const [editing, setEditing] = useState(false)
+    return(
         <>
             {
                 editing &&
-                <div>
-                    <input onChange={(e) =>
-                        setEditingWidget(widget => ({...widget, text: e.target.value}))}
-                           value={widget.text} className="form-control"/>
-                    <select onChange={(e) =>
-                        setEditingWidget(widget => ({...widget, size: parseInt(e.target.value)}))}
-                            value={widget.size} className="form-control">
+                <>
+                    <select value={cachedWidget.type}
+                            onChange={(e)=>{
+                                setCachedWidget(cachedWidget=>({...cachedWidget, type:e.target.value}))
+                            }}
+                            className="form-control">
+                        <option value={"HEADING"}>HEADING</option>
+                        <option value={"PARAGRAPH"}>PARAGRAPH</option>
+                    </select>
+                    <br/>
+
+                    <input value={cachedWidget.text}
+                           onChange={(e)=>{
+                               setCachedWidget(cachedWidget=>({...cachedWidget, text: e.target.value}))
+                           }}
+                           className="form-control"/>
+                    <br/>
+                    <select value={cachedWidget.size}
+                            onChange={(e)=>{
+                                setCachedWidget(cachedWidget=>({...cachedWidget, size:parseInt(e.target.value)}))
+                            }}
+                            className="form-control">
                         <option value={1}>Heading 1</option>
                         <option value={2}>Heading 2</option>
                         <option value={3}>Heading 3</option>
@@ -19,11 +36,27 @@ const HeadingWidget = ({widget, setEditingWidget, editing}) => {
                         <option value={5}>Heading 5</option>
                         <option value={6}>Heading 6</option>
                     </select>
-                </div>
+                    <i
+                        onClick={() => {
+                            updateWidget(cachedWidget.id, cachedWidget)
+                            setEditing(false)
+                        }}
+                        className="fas fa-check fa-2x float-right"
+                    />
+
+                    <i
+                        onClick={() => {
+                            deleteWidget(cachedWidget.id)
+                            setEditing(false)
+                        }}
+                        className="fas fa-trash fa-2x float-right"
+                    />
+                </>
             }
             {
                 !editing &&
                 <>
+                    <i onClick={() => setEditing(true)} className="fas fa-cog fa-2x float-right"></i>
                     {widget.size === 1 && <h1>{widget.text}</h1>}
                     {widget.size === 2 && <h2>{widget.text}</h2>}
                     {widget.size === 3 && <h3>{widget.text}</h3>}
@@ -36,4 +69,4 @@ const HeadingWidget = ({widget, setEditingWidget, editing}) => {
     )
 }
 
-export default HeadingWidget
+export default HeadingWidget;
