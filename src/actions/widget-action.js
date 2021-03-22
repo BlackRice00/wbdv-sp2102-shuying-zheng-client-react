@@ -5,7 +5,7 @@ export const DELETE_WIDGET = "DELETE_WIDGET"
 export const UPDATE_WIDGET = "UPDATE_WIDGET"
 export const FIND_ALL_WIDGETS_FOR_TOPIC = "FIND_ALL_WIDGETS_FOR_TOPIC"
 
-export const createWidget = (dispatch, tid) => {
+export const createWidgetForTopic = (dispatch, tid) => {
     const defaultWidget = {type: "HEADING", size: 3, text: "New Widget"}
     widgetService.createWidgetForTopic(tid, defaultWidget)
         .then(actualWidget => dispatch({
@@ -38,7 +38,7 @@ export const findWidgetsForTopic = (dispatch, tid) => {
 }
 
 export const widgetAction = {
-    createWidget,
+    createWidgetForTopic,
     updateWidget,
     deleteWidget,
     findWidgetsForTopic

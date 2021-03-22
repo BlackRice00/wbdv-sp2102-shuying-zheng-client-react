@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 
 const WidgetList = ({
                         widgets = [],
-                        createWidget,
+                        createWidgetForTopic,
                         deleteWidget,
                         updateWidget,
                         findWidgetsForTopic
@@ -20,7 +20,7 @@ const WidgetList = ({
 
     return (
         <div>
-            <i onClick={() => createWidget(topicId)} className="fas fa-plus fa-2x float-right"></i>
+            <i onClick={() => createWidgetForTopic(topicId)} className="fas fa-plus fa-2x float-right"></i>
             <h2>Widget List({widgets.length})</h2>
             <ul className="list-group">
 
@@ -56,9 +56,9 @@ const stmp = state => {
 }
 
 const dtmp = (dispatch) => ({
-    createWidget: (topicId) => {
+    createWidgetForTopic: (topicId) => {
         if (topicId !== undefined) {
-            widgetActions.createWidget(dispatch, topicId)
+            widgetActions.createWidgetForTopic(dispatch, topicId)
         }
     },
 
