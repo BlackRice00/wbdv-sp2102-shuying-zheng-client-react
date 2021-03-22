@@ -6,7 +6,7 @@ export const UPDATE_WIDGET = "UPDATE_WIDGET"
 export const FIND_ALL_WIDGETS_FOR_TOPIC = "FIND_ALL_WIDGETS_FOR_TOPIC"
 
 export const createWidget = (dispatch, tid) => {
-    const defaultWidget = {type: "HEADING", size: 1, text: "New Widget"}
+    const defaultWidget = {type: "HEADING", size: 3, text: "New Widget"}
     widgetService.createWidgetForTopic(tid, defaultWidget)
         .then(actualWidget => dispatch({
                                            type: CREATE_WIDGET,

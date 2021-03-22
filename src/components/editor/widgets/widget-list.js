@@ -62,12 +62,12 @@ const dtmp = (dispatch) => ({
         }
     },
 
-    updateWidget: (wid, widget) => {
-        widgetActions.updateWidget(dispatch, wid, widget)
+    updateWidget: (widgetId, widget) => {
+        widgetActions.updateWidget(dispatch, widgetId, widget)
     },
 
-    deleteWidget: (wid) => {
-        widgetActions.deleteWidget(dispatch, wid)
+    deleteWidget: (widgetId) => {
+        widgetActions.deleteWidget(dispatch, widgetId)
     },
 
     findWidgetsForTopic: (topicId) => {
