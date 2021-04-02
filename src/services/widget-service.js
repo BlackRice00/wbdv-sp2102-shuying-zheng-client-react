@@ -2,7 +2,7 @@
 // const WIDGET_URL = "https://wbdv-course.herokuapp.com/api/widgets"
 
 const TOPIC_URL = "http://localhost:8080/api/topics"
-const WIDGET_URL = "http://localhost:8080/api/topics/${topicId}/widgets"
+const WIDGET_URL = "http://localhost:8080/api/widgets"
 
 
 export const findWidgetsForTopic = (topicId) => {

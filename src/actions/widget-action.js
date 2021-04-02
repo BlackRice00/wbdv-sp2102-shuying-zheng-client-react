@@ -32,8 +32,8 @@ export const updateWidget = (dispatch, wid, widget) => {
 
 export const findWidgetsForTopic = (dispatch, tid) => {
     widgetService.findWidgetsForTopic(tid)
-        .then(allWidgets => {
-            dispatch({type: FIND_ALL_WIDGETS_FOR_TOPIC, widgets: allWidgets})
+        .then(widgets => {
+            dispatch({type: FIND_ALL_WIDGETS_FOR_TOPIC, widgets: widgets})
         })
 }
 

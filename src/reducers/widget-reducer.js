@@ -3,7 +3,7 @@ import {
     DELETE_WIDGET,
     UPDATE_WIDGET,
     FIND_ALL_WIDGETS_FOR_TOPIC
-} from "../actions/widget-action";
+} from "../actions/widget-action"
 
 const initialState = {
     widgets: []
@@ -22,7 +22,7 @@ const widgetReducer = (state=initialState, action) => {
         case FIND_ALL_WIDGETS_FOR_TOPIC:
             return {
                 ...state,
-                topics: action.widgets
+                widgets: action.widgets
             }
 
         case DELETE_WIDGET:

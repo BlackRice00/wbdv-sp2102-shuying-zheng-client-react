@@ -4,10 +4,10 @@ const HeadingWidget = ({widget, updateWidget, deleteWidget}) => {
     const [cachedWidget, setCachedWidget] = useState(widget)
     const [editing, setEditing] = useState(false)
     return(
-        <>
+        <div>
             {
                 editing &&
-                <>
+                <div>
                     <select value={cachedWidget.type}
                             onChange={(e)=>{
                                 setCachedWidget(cachedWidget=>({...cachedWidget, type:e.target.value}))
@@ -15,6 +15,8 @@ const HeadingWidget = ({widget, updateWidget, deleteWidget}) => {
                             className="form-control">
                         <option value={"HEADING"}>HEADING</option>
                         <option value={"PARAGRAPH"}>PARAGRAPH</option>
+                        <option value={"LIST"}>LIST</option>
+                        <option value={"IMAGE"}>IMAGE</option>
                     </select>
                     <br/>
 
@@ -51,11 +53,11 @@ const HeadingWidget = ({widget, updateWidget, deleteWidget}) => {
                         }}
                         className="fas fa-trash fa-2x float-right"
                     />
-                </>
+                </div>
             }
             {
                 !editing &&
-                <>
+                <div>
                     <i onClick={() => setEditing(true)} className="fas fa-cog fa-2x float-right"></i>
                     {widget.size === 1 && <h1>{widget.text}</h1>}
                     {widget.size === 2 && <h2>{widget.text}</h2>}
@@ -63,9 +65,9 @@ const HeadingWidget = ({widget, updateWidget, deleteWidget}) => {
                     {widget.size === 4 && <h4>{widget.text}</h4>}
                     {widget.size === 5 && <h5>{widget.text}</h5>}
                     {widget.size === 6 && <h6>{widget.text}</h6>}
-                </>
+                </div>
             }
-        </>
+        </div>
     )
 }
 
