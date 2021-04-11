@@ -19,11 +19,19 @@ const QuizzesList = () => {
                 {
                     quizzes.map((quiz) => {
                         return(
-                            <li>
-                                <Link to={`/courses/${courseId}/quizzes/${quiz._id}`}>
-                                    {quiz.title}
-                                </Link>
-                            </li>
+                            <table className="table-striped col-3">
+                                <tr>
+                                    <Link to={`/courses/${courseId}/quizzes/${quiz._id}`}>
+                                        {quiz.title}
+                                    </Link>
+                                    <button className="btn-primary float-md-right">
+                                        <Link className="text-white" to={`/courses/${courseId}/quizzes/${quiz._id}`}>
+                                            start
+                                        </Link>
+                                    </button>
+                                </tr>
+                                <br/>
+                            </table>
                         )
                     })
                 }

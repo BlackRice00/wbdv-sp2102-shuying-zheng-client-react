@@ -23,6 +23,7 @@ const Quiz = () => {
                         return(
                             <li>
                                 <Question question={question}/>
+                                <br/>
                             </li>
                         )
                     })
