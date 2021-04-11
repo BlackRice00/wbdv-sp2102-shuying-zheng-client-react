@@ -43,6 +43,14 @@ const CourseRow = (
             </td>
             <td scope="col-2" className="d-none d-md-table-cell">{owner}</td>
             <td className="d-none d-lg-table-cell">{lastModified}</td>
+
+            {/*add quizzes*/}
+            <td>
+                <Link to={`/courses/${course._id}/quizzes`}>
+                    Quizzes
+                </Link>
+            </td>
+
             <td>
                 {!editing && <i onClick={() => setEditing(true)}
                                 className="fas fa-edit float-right"></i>}
