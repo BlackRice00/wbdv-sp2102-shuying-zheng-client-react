@@ -68,9 +68,10 @@ const MultipleChoiceQuestion = ({question}) => {
                     })
                 }
             </ul>
-            <p>
-                Your answer: {yourAnswer}
-            </p>
+            <hr/>
+            {/*<p>*/}
+            {/*    Your answer: {yourAnswer}*/}
+            {/*</p>*/}
             <div className={"row"}>
                 <button className={"btn btn-success"} onClick={() => setChosen(true)}>Grade</button>
             </div>
