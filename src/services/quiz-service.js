@@ -8,7 +8,7 @@
 //     }).then(response => response.json())
 //         .then(result => console.log(result))
 // }
-const API_URL = "http://localhost:4000/api"
+const API_URL = "https://wbdv-course.herokuapp.com/api"
 
 export const submitQuiz = (quizId, questions) => {
     return fetch(`${API_URL}/quizzes/${quizId}/attempts`, {
