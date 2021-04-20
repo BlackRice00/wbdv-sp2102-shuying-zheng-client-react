@@ -1,13 +1,14 @@
 import React, {useState} from "react";
-
-const MultipleChoiceQuestion = ({question}) => {
+// const MultipleChoiceQuestion = ({question}, isGraded, setQuestionsWithAns) => {
+const MultipleChoiceQuestion = (props) => {
     const [yourAnswer, setYourAnswer] = useState("")
-    const [chosen, setChosen] = useState(false)
+    // click on grade -> the answer is chosen and unchangeable
+    const [chosen, setChosen] = useState(props.isGraded)
     const [answerCorrect, setAnswerCorrect] = useState(false)
     return(
         <div>
             <h5>
-                {question.question}
+                {props.question.question}
                 {chosen &&
                 <span>
                     {
@@ -35,7 +36,7 @@ const MultipleChoiceQuestion = ({question}) => {
 
             <ul className="list-group">
                 {
-                    question.choices.map((choice) => {
+                    props.question.choices.map((choice) => {
                         return(
                             // <li className={`list-group-item
                             // ${chosen && yourAnswer === question.correct ? 'list-group-item-success' : ''}`}>
@@ -49,19 +50,20 @@ const MultipleChoiceQuestion = ({question}) => {
                             //     </label>
                             // </li>
                             <li className={`list-group-item 
-                ${chosen && choice === question.correct ? 'list-group-item-success' : ''} 
-                ${chosen && choice !== question.correct && choice === yourAnswer ? 'list-group-item-danger' : ''}`}>
+                ${chosen && choice === props.question.correct ? 'list-group-item-success' : ''} 
+                ${chosen && choice !== props.question.correct && choice === yourAnswer ? 'list-group-item-danger' : ''}`}>
                                 <label>
-                                    <input type="radio" name={question._id} onClick={() => {
+                                    <input type="radio" name={props.question._id} onClick={() => {
                                         setYourAnswer(choice)
-                                        setAnswerCorrect(choice === question.correct)
+                                        setAnswerCorrect(choice === props.question.correct)
+                                        props.setQuestionsWithAns(Object.assign({},props.question,{answer:choice}))
                                     }}/>
                                     {choice}
                                 </label>
-                                {chosen && choice === question.correct &&
+                                {chosen && choice === props.question.correct &&
                                 <i className="float-right fas fa-check fa-2x"></i>}
 
-                                {chosen && choice !== question.correct && choice === yourAnswer &&
+                                {chosen && choice !== props.question.correct && choice === yourAnswer &&
                                 <i className="float-right fas fa-times fa-2x"></i> }
                             </li>
                         )
