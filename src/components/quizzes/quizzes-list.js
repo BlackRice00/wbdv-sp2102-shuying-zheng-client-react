@@ -6,7 +6,7 @@ const QuizzesList = () => {
     const [quizzes, setQuizzes] = useState([])
     useEffect(() => {
         // TODO: move this to a service file
-        fetch("http://localhost:4000/api/quizzes")
+        fetch("https://wbdv-course.herokuapp.com/api/quizzes")
             .then(response => response.json())
             .then((quizzes) => {
                 setQuizzes(quizzes)
